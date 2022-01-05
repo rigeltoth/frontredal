@@ -1,0 +1,14 @@
+.tableHeight tbody{
+    height: 20rem;
+    overflow-y: auto;
+    width: 100%;
+}
+.tableHeight thead, tbody, tr, td, th{
+    display: block;
+}
+.tableHeight tbody tr td th{
+    float: left;
+}
+.tableHeight thead tr th{
+    float: left;
+}

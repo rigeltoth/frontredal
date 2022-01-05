@@ -1,0 +1,17 @@
+
+<div class="row">
+    <div class="card col-md-3 " *ngFor="let comment of comments">
+        <div class="card-body align-items-stretch">
+            <div class="card-title">
+                <span class="btn btn-outline-primary btn-sm ">{{ comment.id }}</span>
+                <span class="fs-3">{{comment.name}}</span>
+            </div>
+            <div class="card-subtitle text-muted mt-3 fst-italic">
+                {{ comment.email }}
+            </div>
+            <div class="card-text">
+                {{ comment.body }}
+            </div>
+        </div>
+    </div>
+</div>

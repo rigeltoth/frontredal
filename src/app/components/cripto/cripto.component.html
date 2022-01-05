@@ -1,0 +1,43 @@
+<div class="row my-3">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body text-center text-white bg-primary">
+                CRYPTO API
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search"
+        (keyup)="searchCoin()"
+        [(ngModel)]="searchText">
+    </div>
+</div>
+<div class="row">
+    <table class="table table-primary table-striped table-hover tableHeight">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>Crypto</th>
+                <th>Current price</th>
+                <th>% Price change 24h</th>
+                <th>Total Volume</th>
+            </tr>
+        </thead>
+        <tbody class="sticky-top">
+            <tr *ngFor="let coin of Filtredcoins; let i = index">
+
+                <td><img src="{{ coin.image }}" style="width: 2rem;"></td>
+                <td>{{ i+1 }}</td>
+                <td>{{ coin.name }} <span class="text-uppercase text-muted ms-2">{{ coin.symbol }}</span></td>
+                <td>$ {{ coin.current_price.toLocaleString() }}</td>
+
+                <td [ngClass]="coin.price_change_percentage_24h > 0 ? 'text-success': 'text-danger'">
+                    {{ coin.price_change_percentage_24h }}
+                </td>
+
+                <td>{{ coin.total_volume }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

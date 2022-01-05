@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <form #itemForm = "ngForm">
+                    <input type="hidden" name="_id" [(ngModel)]="itemService.FormItem._id">
+                    <div class="form-group">
+                        <input [(ngModel)]="itemService.FormItem.name" type="text" class="form-control" placeholder="Name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="itemService.FormItem.brand" type="text" class="form-control" placeholder="Brand" name="brand">
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="itemService.FormItem.price" type="number" class="form-control" placeholder="Price" name="price">
+                    </div>
+                    <div class="form-group">
+                        <input [(ngModel)]="itemService.FormItem.cant" type="number" class="form-control" placeholder="Available" name="cant">
+                    </div>
+
+                    <button class="btn btn-outline-primary ms-5" (click)="resetForm(itemForm)">Clear</button>
+                    <button class="btn btn-outline-success ms-5" (click)="createItem(itemForm)">Save</button>
+                </form> 
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Price </th>
+                    <th>Cant</th>
+                    <th>options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of itemService.items">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.brand }}</td>
+                    <td>$ {{ item.price }}</td>
+                    <td>{{ item.cant }}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm">
+                            <i class="material-icons" (click)="uploadItem(item)">edit</i>
+                        </button>
+                        <button class="btn btn-danger btn-sm" (click)="deleteItem(item._id)">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
